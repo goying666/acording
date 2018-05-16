@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.renchaigao.dao.TermDao">
+
+    <!--//新增用户信息-->
+    <insert id="addTerm" parameterType="com.renchaigao.domain.term.Term" useGeneratedKeys="true" keyProperty="id">
+        insert into terminfo (id,ownerId,content,address,introduce,zanNum,tingNum,acordingNum,addTime,acordingIds,termClass)
+        values(#{id},#{ownerId},#{content},#{address},#{introduce},#{zanNum},#{tingNum},#{acordingNum},#{addTime},#{acordingIds},#{termClass})
+    </insert>
+    <!--更新 通过id 更新 zanNum -->
+    <update id="updateTermZanById">
+        update terminfo set zanNum = #{zanNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 tingNum -->
+    <update id="updateTermTingById">
+        update terminfo set tingNum = #{tingNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 content -->
+    <update id="updateTermContentById">
+        update terminfo set content = #{content} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 acordingIds -->
+    <update id="updateTermAcordingIdsById">
+        update terminfo set acordingIds = #{acordingIds} where id = #{id}
+    </update>
+
+    <!--&lt;!&ndash;查询用户信息&ndash;&gt;-->
+    <select id="getTermById" resultType="com.renchaigao.domain.term.Term">
+        SELECT * FROM terminfo WHERE id=#{id}
+    </select>
+
+    <delete id="deleteTerm" parameterType="int">
+        DELETE FROM terminfo WHERE  id=#{id}
+    </delete>
+
+</mapper>

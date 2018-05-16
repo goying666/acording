@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.renchaigao.dao.UserDao">
+    <!--//新增用户信息-->
+    <insert id="addUserinfo" parameterType="com.renchaigao.domain.user.User" useGeneratedKeys="true" keyProperty="id">
+        insert into userinfo (id,nickName,avatarUrl,gender,city,province,country,language,unionID,address,vip)
+        values(#{id},#{nickName},#{avatarUrl},#{gender},#{city},#{province},#{country},#{language},#{unionID},#{address},#{vip})
+    </insert>
+
+    <!--//新增用户登录信息-->
+    <insert id="addUserLogin" parameterType="com.renchaigao.domain.user.UserLogin" useGeneratedKeys="true" keyProperty="id">
+        insert into userlogin (id,loginDate,nickName,avatarUrl,gender,city,province,country,language,unionID,address,vip)
+        values(#{id},#{loginDate},#{nickName},#{avatarUrl},#{gender},#{city},#{province},#{country},#{language},#{unionID},#{address},#{vip})
+    </insert>
+
+    <!--更新 通过id 更新 address -->
+    <update id="updateUserAddressByID">
+        update userinfo set address = #{address} where id = #{id}
+    </update>
+
+    <!--更新 通过id 更新 address -->
+    <update id="updateUser" parameterType="com.renchaigao.domain.user.User">
+        update userinfo set address = #{address} where id = #{id}
+    </update>
+
+    <!--&lt;!&ndash;查询用户信息&ndash;&gt;-->
+    <select id="findUserByID" resultType="com.renchaigao.domain.user.User">
+        SELECT * FROM userinfo WHERE id=#{id}
+    </select>
+
+    <!--&lt;!&ndash;查询用户信息&ndash;&gt;-->
+    <select id="findUserByNikename" resultType="com.renchaigao.domain.user.User">
+        SELECT * FROM userinfo WHERE nickName=#{nickName}
+    </select>
+
+</mapper>

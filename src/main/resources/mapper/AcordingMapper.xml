@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.renchaigao.dao.AcordingDao">
+
+    <!--//新增录音信息-->
+    <insert id="addAcroding" parameterType="com.renchaigao.domain.acording.Acording" useGeneratedKeys="true" keyProperty="id">
+        insert into acroding (id,termId,termInfo,userId,path,address,fileName,tingNum,zanNum,addtime,shoucangNum,shareNum,badNum)
+        values(#{id},#{termId},#{termInfo},#{userId},#{path},#{address},#{fileName},#{tingNum},#{zanNum},#{addtime},#{shoucangNum},#{shareNum},#{badNum})
+    </insert>
+
+    <!--更新 通过id 更新 path -->
+    <update id="updateAcoPathById">
+        update acroding set path = #{path} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 fileName -->
+    <update id="updateAcoFileNameById">
+        update acroding set fileName = #{fileName} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 tingNum -->
+    <update id="updateAcoTingById">
+        update acroding set tingNum = #{tingNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 zanNum -->
+    <update id="updateAcoZanNameById">
+        update acroding set zanNum = #{zanNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 shoucangNum -->
+    <update id="updateAcoShouNameById">
+        update acroding set shoucangNum = #{shoucangNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 shareNum -->
+    <update id="updateAcoShareNameById">
+        update acroding set shareNum = #{shareNum} where id = #{id}
+    </update>
+    <!--更新 通过id 更新 badNum -->
+    <update id="updateAcoBadNameById">
+        update acroding set badNum = #{badNum} where id = #{id}
+    </update>
+
+    <!--通过id删除数据-->
+    <delete id="deleteAcordingById" parameterType="int">
+        DELETE FROM acroding WHERE  id=#{id}
+    </delete>
+
+    <!--查询 通过id 查询 acroding-->
+    <select id="findAcordingById" resultType="com.renchaigao.domain.acording.Acording">
+        SELECT * FROM acroding WHERE id=#{id}
+    </select>
+
+</mapper>
