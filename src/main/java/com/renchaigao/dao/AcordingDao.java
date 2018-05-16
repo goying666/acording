@@ -17,6 +17,7 @@ public interface AcordingDao {
     Integer deleteAcordingById(@Param("id") Integer id);
 
     Acording findAcordingById(@Param("id") Integer id);
+    Integer findUserIdByFileName(@Param("fileName") String fileName);
 
 
 

@@ -49,4 +49,10 @@
         SELECT * FROM acroding WHERE id=#{id}
     </select>
 
+    <!--查询 通过id 查询 acroding-->
+    <select id="findUserIdByFileName" resultType="int">
+        SELECT userId FROM acroding WHERE fileName=#{fileName}
+    </select>
+
+
 </mapper>
